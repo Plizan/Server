@@ -1,0 +1,1 @@
+protoc.exe --proto_path=./ --csharp_out=./BufferSource ./Buffer.proto

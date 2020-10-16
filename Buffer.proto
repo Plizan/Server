@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Buffer;
+
+option csharp_namespace = "Google.Protobuf.Buffer";
+
+message Packet{
+	enum Type {
+		LOGIN = 0;
+		LOGOUT = 1;
+	}
+}
+
+message TPlayer{
+	Packet.Type type = 1;
+}
