@@ -20,7 +20,7 @@ namespace Server
         private void Init()
         {
             {
-
+                TPlayer player = new TPlayer();
             }
         }
     }

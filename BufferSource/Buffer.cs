@@ -25,7 +25,7 @@ namespace Google.Protobuf.Buffer {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxCdWZmZXIucHJvdG8SBkJ1ZmZlciInCgZQYWNrZXQiHQoEVHlwZRIJCgVM",
-            "T0dJThAAEgoKBkxPR09VVBABIiwKB1RQbGF5ZXISIQoEdHlwZRgBIAEoDjIT",
+            "T0dJThAAEgoKBkxPR09VVBABIiwKB1RQbGF5ZXISIQoEdHlwZRgBIAMoDjIT",
             "LkJ1ZmZlci5QYWNrZXQuVHlwZUIZqgIWR29vZ2xlLlByb3RvYnVmLkJ1ZmZl",
             "cmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -216,7 +216,7 @@ namespace Google.Protobuf.Buffer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public TPlayer(TPlayer other) : this() {
-      type_ = other.type_;
+      type_ = other.type_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -227,13 +227,12 @@ namespace Google.Protobuf.Buffer {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::Google.Protobuf.Buffer.Packet.Types.Type type_ = global::Google.Protobuf.Buffer.Packet.Types.Type.Login;
+    private static readonly pb::FieldCodec<global::Google.Protobuf.Buffer.Packet.Types.Type> _repeated_type_codec
+        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::Google.Protobuf.Buffer.Packet.Types.Type) x);
+    private readonly pbc::RepeatedField<global::Google.Protobuf.Buffer.Packet.Types.Type> type_ = new pbc::RepeatedField<global::Google.Protobuf.Buffer.Packet.Types.Type>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Google.Protobuf.Buffer.Packet.Types.Type Type {
+    public pbc::RepeatedField<global::Google.Protobuf.Buffer.Packet.Types.Type> Type {
       get { return type_; }
-      set {
-        type_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -249,14 +248,14 @@ namespace Google.Protobuf.Buffer {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Type != other.Type) return false;
+      if(!type_.Equals(other.type_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != global::Google.Protobuf.Buffer.Packet.Types.Type.Login) hash ^= Type.GetHashCode();
+      hash ^= type_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -273,10 +272,7 @@ namespace Google.Protobuf.Buffer {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != global::Google.Protobuf.Buffer.Packet.Types.Type.Login) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Type);
-      }
+      type_.WriteTo(output, _repeated_type_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -286,10 +282,7 @@ namespace Google.Protobuf.Buffer {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != global::Google.Protobuf.Buffer.Packet.Types.Type.Login) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Type);
-      }
+      type_.WriteTo(ref output, _repeated_type_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -299,9 +292,7 @@ namespace Google.Protobuf.Buffer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Type != global::Google.Protobuf.Buffer.Packet.Types.Type.Login) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
+      size += type_.CalculateSize(_repeated_type_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -313,9 +304,7 @@ namespace Google.Protobuf.Buffer {
       if (other == null) {
         return;
       }
-      if (other.Type != global::Google.Protobuf.Buffer.Packet.Types.Type.Login) {
-        Type = other.Type;
-      }
+      type_.Add(other.type_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -330,8 +319,9 @@ namespace Google.Protobuf.Buffer {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10:
           case 8: {
-            Type = (global::Google.Protobuf.Buffer.Packet.Types.Type) input.ReadEnum();
+            type_.AddEntriesFrom(input, _repeated_type_codec);
             break;
           }
         }
@@ -348,8 +338,9 @@ namespace Google.Protobuf.Buffer {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 10:
           case 8: {
-            Type = (global::Google.Protobuf.Buffer.Packet.Types.Type) input.ReadEnum();
+            type_.AddEntriesFrom(ref input, _repeated_type_codec);
             break;
           }
         }
