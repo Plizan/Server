@@ -11,5 +11,5 @@ message Packet{
 }
 
 message TPlayer{
-	repeated Packet.Type type = 1;
+	Type type = 1;
 }
